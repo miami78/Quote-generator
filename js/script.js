@@ -67,4 +67,12 @@ let quotes = ["The greatest glory in living lies not in never falling, but in ri
 function randomQuoteGenerator () {
     const randomQuote = Math.floor(Math.random() * (quotes.length));
     document.getElementById('quotes').innerHTML = quotes[randomQuote];
+    console.log(randomQuote)
 }
+
+let min = o;
+let max = 7;
+// Generate random number
+  const generateRandomNumber = () => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
