@@ -12,14 +12,18 @@
 <body>
     <div class = "quote-container">
         <h1 class = "quote-title">QUOTE TITLE</h1>
-        <div id = "quote-type">
-            <input type="radio" name="type" id="famousQuotes" value="famousQuotes" checked /> famousQuotes
-            <input type="radio" name="type" id="marvelQuotes" value="marvelQuotes" /> marvelQuotes<br>
+        <div class="select">
+            <select name="filter_category" required>
+                <option disabled selected value>Select a category</option>
+                <option value="famousQuotes">Famous</option>
+                <option value="marvelQuotes">Marvel</option>					
+            </select>
+            <div class="select__arrow"></div>
         </div>
         <div id = "quotes">
             <!--Quotes will display here-->
         </div>
-        <button onclick="randomQuoteGenerator()">Generate</button>
+        <button class ="btnQuote" id = "generateQuote">Generate</button>
     </div>
     <!-- Scripts -->
     <script src="js/script.js"></script>

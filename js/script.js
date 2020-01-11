@@ -73,7 +73,8 @@ function randomQuoteGenerator () {
 let min = o;
 let max = 7;
 let numberOfQuotes = 1;
-let radioButton = document.getElementsByName("type");
+let generateQuoteBtn = document.querySelector("#btnQuote");
+let dropDownBtn = document.getElementsByName("select__arrow");
 // Generate random number
   const generateRandomNumber = () => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
