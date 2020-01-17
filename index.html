@@ -12,7 +12,7 @@
 <body>
     <div class = "quote-container">
         <h1 class = "quote-title">QUOTE TITLE</h1>
-        <div class="select">
+        <div id="selectQuote">
             <select name="filter_category" required>
                 <option disabled selected value>Select a category</option>
                 <option value="famousQuotes">Famous</option>
@@ -20,10 +20,11 @@
             </select>
             <div class="select__arrow"></div>
         </div>
-        <div id = "quotes">
+        <div id = "quotestext">
             <!--Quotes will display here-->
         </div>
         <button class ="btnQuote" id = "generateQuote">Generate</button>
+        <button id = "resetBtn">Clear</button>
     </div>
     <!-- Scripts -->
     <script src="js/script.js"></script>
