@@ -59,26 +59,41 @@ let marvelQuotes = {
 
 let max = 6;
 let generateQuoteBtn = document.getElementById("generateQuote");
-let quotesType = document.getElementsByName("select__arrow").value;
-let numberOfQuotes = document.getElementsByName("").value;
+let quotesType = document.getElementById("quoteType");
+// let numberOfQuotes = document.getElementsByName("");
 let quotesText = document.getElementById("quotestext");
+
+//get initial selected values in selection panel  
+// let qNum = numberOfQuotes.value;
+let qType = quotesType.value;
+
+// eventlistener to choose quote type
+quotesType.addEventListener("change", (e) => {
+  qType = e.target.value
+});
+
+// eventlistener to choose number of quotes to be displayed
+// numberOfQuotes.addEventListener("change", (e) => {
+//   qNum = e.target.value
+// });
+
 
 // Generate random number
   const generateRandomNumber = () => {
     return Math.floor(Math.random() * (max + 1));
   };
 // quotes 3 arrays 
-const generateQuote = quotes => {
-  randomBeginning = quotes.beginning[Math.floor(Math.random() * quotes.beginning.length)];
-  randomMiddle = quotes.middle[Math.floor(Math.random() * quotes.middle.length)];
-  randomEnd = quotes.end[Math.floor(Math.random() * quotes.end.length)];
+const generateQuote = (quotesType) => {
+  randomBeginning = quotesType.beginning[Math.floor(Math.random() * quotesType.beginning.length)];
+  randomMiddle = quotesType.middle[Math.floor(Math.random() * quotesType.middle.length)];
+  randomEnd = quotesType.end[Math.floor(Math.random() * quotesType.end.length)];
   return randomBeginning + randomMiddle + randomEnd;
 }
 
   /// Button to generate quotes on click
   generateQuoteBtn.addEventListener("click", () => {
     let quotes = document.createElement("p");
-    let textQuote = document.createTextNode(generateQuote(marvelQuotes));
+    let textQuote = document.createTextNode(generateQuote[qType]);
     quotes.appendChild(textQuote);
     quotesText.appendChild(quotes);
     console.log(textQuote)
