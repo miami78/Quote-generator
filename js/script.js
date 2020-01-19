@@ -1,5 +1,5 @@
-let famousQuotes =  {
-    beginning: [
+let famousQuotes = [
+    [
         "The greatest glory in living lies not",
         "The way to get started",
         "Your time is limited",
@@ -8,7 +8,7 @@ let famousQuotes =  {
         "If you set your goals ridiculously high ",
         "Life is what happens when "
       ],
-    middle: [
+      [
         "in never falling, but in rising",
         "is to quit talking",
         "and begin doing.",
@@ -17,7 +17,7 @@ let famousQuotes =  {
         "If you look at what you don't have in life",
         "and it's a failure"
     ],
-    end: [
+    [
         "every time we fall.",
         "which is living with the results of other people's thinking.",
         "it would cease to be life",
@@ -26,9 +26,10 @@ let famousQuotes =  {
         "so don't waste it living someone else's life.",
         "you're busy making other plans."
     ]
-};
-let marvelQuotes = {
-    beginning: [
+  ];
+
+let marvelQuotes = [
+    [
         "Compromise where you can, but where you can’t, don’t.",
         "It is your duty to plant yourself like a tree,",
         "doesn’t mean it can’t be improved.",
@@ -37,7 +38,7 @@ let marvelQuotes = {
         "Losers… I mean like, folks who have lost stuff. ",
         "It is giving us a chance."
       ],
-    middle: [
+    [
         "Even if everyone is telling you that something wrong is something right.",
         "to look them in the eye and say, no, you move.",
         "Whatever happens tomorrow,",
@@ -46,7 +47,7 @@ let marvelQuotes = {
         "And you think life takes more than it gives,",
         "It’s an imperfect world but"
     ],
-    end: [
+    [
         "Even if the whole world is telling you to move.",
         "Just because something works, ",
         "you must promise me one thing. ",
@@ -55,49 +56,61 @@ let marvelQuotes = {
         "but not today. Today it’s giving us something.",
         "Always has been. "
     ]
-};
+  ];
+//get the button that will generated quotes
+const generateQuoteBtn = document.querySelector("#generateQuote");
 
-let max = 6;
-let generateQuoteBtn = document.getElementById("generateQuote");
-let quotesType = document.getElementById("quoteType");
-// let numberOfQuotes = document.getElementsByName("");
-let quotesText = document.getElementById("quotestext");
+//get the input used to select the number of quotes
+const numberOfQuotes = document.querySelector("#quote-number");
 
-//get initial selected values in selection panel  
-// let qNum = numberOfQuotes.value;
-let qType = quotesType.value;
+//get the button that will clear the page
+const reset = document.querySelector("#resetBtn");
 
-// eventlistener to choose quote type
-quotesType.addEventListener("change", (e) => {
-  qType = e.target.value
-});
+const quoteContainer = document.querySelector("#quote-container");
 
-// eventlistener to choose number of quotes to be displayed
-// numberOfQuotes.addEventListener("change", (e) => {
-//   qNum = e.target.value
-// });
-
-
-// Generate random number
-  const generateRandomNumber = () => {
-    return Math.floor(Math.random() * (max + 1));
-  };
-// quotes 3 arrays 
-const generateQuote = (quotesType) => {
-  randomBeginning = quotesType.beginning[Math.floor(Math.random() * quotesType.beginning.length)];
-  randomMiddle = quotesType.middle[Math.floor(Math.random() * quotesType.middle.length)];
-  randomEnd = quotesType.end[Math.floor(Math.random() * quotesType.end.length)];
-  return randomBeginning + randomMiddle + randomEnd;
-}
 
   /// Button to generate quotes on click
-  generateQuoteBtn.addEventListener("click", () => {
-    let quotes = document.createElement("p");
-    let textQuote = document.createTextNode(generateQuote[qType]);
-    quotes.appendChild(textQuote);
-    quotesText.appendChild(quotes);
-    console.log(textQuote)
+  generateQuoteBtn.addEventListener("click", (e) => {
+    //prevent page from reloading 
+    e.preventDefault();
+    //variable to hold the type of quote selected
+    let quoteType;
+    
+    //set the quoteType variable to either famousQuotes or marvelQuotes
+    if (document.querySelector("#famous").checked){
+      quoteType = famousQuotes;
+    } else {
+      quoteType = marvelQuotes;
+    }
+
+    //variable to set the number of generated quotes
+    let qNum = numberOfQuotes.value;
+    
+    if (numberOfQuotes.value > 7) {
+      qNum = 7;
+    }
+
+    //loop through the selected quotation array and concatenate the sentences
+    for (let i = 0; i < qNum; i++){
+      let randomBeginning = [Math.floor(Math.random() * quoteType[0].length)];
+      let randomMiddle = [Math.floor(Math.random() * quoteType[1].length)];
+      let randomEnd = [Math.floor(Math.random() * quoteType[2].length)];
+
+      //create a new paragraph element for each quote
+      let quoteSentence = document.createElement("p");
+      quoteSentence.innerHTML = 
+      `${quoteType[0][randomBeginning]} ${quoteType[1][randomMiddle]} ${quoteType[2][randomEnd]}`;
+      quoteContainer.append(quoteSentence);
+    }
   });
+
+  // Button to reset the page
+reset.addEventListener("click", (e) => {
+  //prevent page from reloading
+  e.preventDefault();
+  // reset the quote container to be empty
+  quoteContainer.innerHTML= "";
+})
 
 
 

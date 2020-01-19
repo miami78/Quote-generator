@@ -10,19 +10,16 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class = "quote-container">
-        <h1 class = "quote-title">QUOTE TITLE</h1>
-            <select id="quoteType" required>
-                <option disabled selected value>Select a category</option>
-                <option value="famousQuotes">Famous</option>
-                <option value="marvelQuotes">Marvel</option>					
-            </select>
-        <div id = "quotestext">
-            <!--Quotes will display here-->
-        </div>
+    <!-- Div that will hold generated quotes -->
+    <div id = "quote-container" class="generated-quote"></div>
+    <form class= "form">
+        Number of Quotes (max 7): <br> <input id="quote-number" type="number" min= "1" max="7" value="1">
+        Quote type:
+        <input id="famous" type="radio" name="type" value="famous" checked>Famous
+        <input id="marvel" type="radio" name="type" value="marvel">Marvel
         <button class ="btnQuote" id = "generateQuote">Generate</button>
         <button id = "resetBtn">Clear</button>
-    </div>
+    </form>
     <!-- Scripts -->
     <script src="js/script.js"></script>
 </body>
