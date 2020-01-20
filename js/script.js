@@ -66,10 +66,11 @@ const numberOfQuotes = document.querySelector("#quote-number");
 //get the button that will clear the page
 const reset = document.querySelector("#resetBtn");
 
+//get the div that holds generated quotes
 const quoteContainer = document.querySelector("#quote-container");
 
 
-  /// Button to generate quotes on click
+  /// Event listener that generates quotes on click
   generateQuoteBtn.addEventListener("click", (e) => {
     //prevent page from reloading 
     e.preventDefault();
@@ -86,7 +87,7 @@ const quoteContainer = document.querySelector("#quote-container");
     //variable to set the number of generated quotes
     let qNum = numberOfQuotes.value;
     
-    //loop through the selected quotation array and concatenate the sentences
+    //loop through the selected quote array and returns the quotes by joining three sentence fragments
     for (let i = 0; i < qNum; i++){
       let randomBeginning = [Math.floor(Math.random() * quoteType[0].length)];
       let randomMiddle = [Math.floor(Math.random() * quoteType[1].length)];
