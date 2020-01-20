@@ -86,10 +86,6 @@ const quoteContainer = document.querySelector("#quote-container");
     //variable to set the number of generated quotes
     let qNum = numberOfQuotes.value;
     
-    if (numberOfQuotes.value > 7) {
-      qNum = 7;
-    }
-
     //loop through the selected quotation array and concatenate the sentences
     for (let i = 0; i < qNum; i++){
       let randomBeginning = [Math.floor(Math.random() * quoteType[0].length)];
